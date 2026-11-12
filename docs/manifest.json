@@ -1,11 +1,12 @@
 
 {
-  "id": "./",
+
+  "id": "/litlas-app/",
   "name": "Litlas",
   "short_name": "Litlas",
   "description": "My Personal Literary Atlas",
-  "start_url": "./",
-  "scope": "./",
+  "start_url": "/litlas-app/",
+  "scope": "/litlas-app/",
   "display": "standalone",
   "background_color": "#F5EEDF",
   "theme_color": "#F5EEDF",
