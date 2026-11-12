@@ -1,52 +1,59 @@
-importScripts('config.js');
 
-const CACHE_NAME = CONFIG.appShortName + "-" + CONFIG.cacheVersion;
+const CACHE_NAME = "Litlas-v5";
 
 const urlsToCache = [
-  './',
-  './index.html',
-  './manifest.json',
-  './config.js',
-  './app.js',
-  './style.css',
-  './icon.png',
+  "./",
+  "./index.html",
+  "./manifest.json",
+  "./config.js",
+  "./app.js",
+  "./style.css",
+  "./icon.png",
+  "./icon-192.png"
 ];
 
-
-self.addEventListener('install', event => {
+self.addEventListener("install", event => {
   self.skipWaiting();
+
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => {
-        console.log('Opened cache');
-        return cache.addAll(urlsToCache);
-      })
+      .then(cache => cache.addAll(urlsToCache))
   );
 });
 
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
-      })
-  );
-});
-
-self.addEventListener('activate', event => {
-  const cacheWhitelist = [CACHE_NAME];
+self.addEventListener("activate", event => {
   event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    }).then(() => self.clients.claim())
+    caches.keys().then(names =>
+      Promise.all(
+        names
+          .filter(name =>
+            name.startsWith("Litlas-") &&
+            name !== CACHE_NAME
+          )
+          .map(name => caches.delete(name))
+      )
+    ).then(() => self.clients.claim())
+  );
+});
+
+self.addEventListener("fetch", event => {
+  const request = event.request;
+  const url = new URL(request.url);
+
+  if (url.origin !== self.location.origin) {
+    return;
+  }
+
+  if (request.mode === "navigate") {
+    event.respondWith(
+      fetch(request).catch(() => caches.match("./index.html"))
+    );
+    return;
+  }
+
+  event.respondWith(
+    caches.match(request).then(
+      cached => cached || fetch(request)
+    )
   );
 });
