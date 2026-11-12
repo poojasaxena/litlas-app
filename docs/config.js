@@ -12,7 +12,7 @@ const CONFIG = {
     // Visuals & Icons
     themeColor: "#0E1117",
     backgroundColor: "#0E1117",
-    appIcon: "/icon.png",
+    appIcon: "./icon.png",
     
     // PWA Display Logic
     displayMode: "standalone",
