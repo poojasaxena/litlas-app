@@ -2,12 +2,12 @@ const CONFIG = {
     // Cache Version
     cacheVersion: "v1",
 
-    // General App Info
-    appName: "My App",
-    appShortName: "MyApp",
+    // App Details
+    appName: "Litlas",
+    appShortName: "Litlas",
     
     // Iframe Config
-    iframeUrl: "https://doc-hello.streamlit.app?embed=true&show_footer=false",
+    iframeUrl: "https://litlas.streamlit.app/?embed=true&show_footer=false",
     
     // Visuals & Icons
     themeColor: "#0E1117",
