@@ -1,15 +1,17 @@
 importScripts('config.js');
 
 const CACHE_NAME = CONFIG.appShortName + "-" + CONFIG.cacheVersion;
+
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/config.js',
-  '/app.js',
-  '/style.css',
-  CONFIG.appIcon,
+  './',
+  './index.html',
+  './manifest.json',
+  './config.js',
+  './app.js',
+  './style.css',
+  './icon.png',
 ];
+
 
 self.addEventListener('install', event => {
   self.skipWaiting();
