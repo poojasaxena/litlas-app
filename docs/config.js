@@ -7,8 +7,8 @@ const CONFIG = {
     appShortName: "Litlas",
     
     // Iframe Config
-    iframeUrl: "https://litlas.streamlit.app/?embed=true&show_footer=false",
-    
+    iframeUrl: "https://litlas.streamlit.app/",
+
     // Visuals & Icons
     themeColor: "#0E1117",
     backgroundColor: "#0E1117",
