@@ -1,6 +1,6 @@
 const CONFIG = {
     // Cache Version
-    cacheVersion: "v2",
+    cacheVersion: "v4",
 
     // App Details
     appName: "Litlas",
