@@ -1,5 +1,5 @@
 
-const CACHE_NAME = "Litlas-v6";
+const CACHE_NAME = "Litlas-v8";
 
 const urlsToCache = [
   "./",
